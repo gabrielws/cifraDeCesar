@@ -1,9 +1,8 @@
-#include<iostream>
-#include<cstring>
+#include<bits/stdc++.h>
 
 using namespace std;
 
-char cifrar(char *frase, int k){
+char cifrar(string frase, int k){
 
     char alfabetoOriginal[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     char alfabetoModificado[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -11,7 +10,7 @@ char cifrar(char *frase, int k){
 
 	strlwr(alfabetoModificado);
 	strlwr(alfabetoOriginal);
-	strlwr(frase);
+	transform(frase.begin(), frase.end(), frase.begin(), ::tolower);
 
 	while(alfabetoModificado[n] != 0){
 		if((alfabetoModificado[n] + k) > 122){ //Z = 122
@@ -36,20 +35,19 @@ char cifrar(char *frase, int k){
         }
         i++;
 	}
-
-	cout<<"\n";
 }
 
 int main(){
-
-	char frase[100];
+	string frase;
 	int k, i;
 
 	cout<<"Digite o valor de K: ";
 	cin>>k;
 
 	cout<<"Digite a frase a ser criptografada: ";
-	cin>>frase;
+
+	cin.ignore();
+	getline(cin,frase);
 
 	cifrar(frase, k);
 
