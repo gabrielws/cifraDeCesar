@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 
 using namespace std;
+#define total 26
 
 char cifrar(string frase, int k){
 
@@ -14,11 +15,11 @@ char cifrar(string frase, int k){
 
 	while(alfabetoModificado[n] != 0){
 		if((alfabetoModificado[n] + k) > 122){ //Z = 122
-			alfabetoModificado[n] -= 26;
+			alfabetoModificado[n] -= total;
 		}
 
 		if((alfabetoModificado[n] + k) < 97){ //A = 97
-			alfabetoModificado[n] += 26;
+			alfabetoModificado[n] += total;
 		}
 
 		alfabetoModificado[n] = alfabetoModificado[n] + k;
@@ -28,10 +29,16 @@ char cifrar(string frase, int k){
 	cout<<"\nFrase Criptografada: ";
 
 	while(frase[i]!=0){
-        for(int j=0;j<26;j++){
-            if(frase[i] == alfabetoOriginal[j]){
+        for(int j=0;j<total;j++){
+        	if (frase[i] == 32){
+        		cout<<" ";
+        		j = total;
+			}
+            else if(frase[i] == alfabetoOriginal[j]){
                 cout<<alfabetoModificado[j];
+                j = total;
             }
+
         }
         i++;
 	}
